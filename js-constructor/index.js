@@ -5,6 +5,7 @@ const model = [
     type: 'columns',
     value: ['111111111', '222222222', '444444444', '555555555', '66666666'],
   },
+  { type: 'image', value: './assets/image.png' },
 ];
 
 const $site = document.querySelector('#site');
@@ -25,6 +26,8 @@ model.forEach((block) => {
     `;
   } else if (block.type === 'columns') {
     html = columns(block.value);
+  } else if (block.type === 'image') {
+    html = image(block.value);
   }
   $site.insertAdjacentHTML('beforeend', html);
 });
@@ -35,4 +38,10 @@ function columns(columns) {
             ${html.join('')}
          </div>
          `;
+}
+
+function image(path) {
+  return `
+    <img src='${path}'/>
+  `;
 }
