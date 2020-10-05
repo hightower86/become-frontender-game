@@ -1,5 +1,5 @@
 const model = [
-  { type: 'title', value: 'Hello world from js' },
+  { type: 'title', value: 'Hello world from js!!!' },
   { type: 'text', value: 'Here we go with some text' },
   {
     type: 'columns',
@@ -19,11 +19,12 @@ model.forEach((block) => {
     </div>
     `;
   } else if (block.type === 'text') {
-    html = `
-    <div class="row">
-      <div class="col-sm"><p>${block.value}</p></div>
-    </div>
-    `;
+    // html = `
+    // <div class="row">
+    //   <div class="col-sm"><p>${block.value}</p></div>
+    // </div>
+    // `;
+    html = row(col(text(block.value)));
   } else if (block.type === 'columns') {
     html = columns(block.value);
   } else if (block.type === 'image') {
@@ -44,4 +45,21 @@ function image(path) {
   return `
     <img src='${path}'/>
   `;
+}
+
+function row(content) {
+  return `
+  <div class="row">
+    ${content}
+  </div>
+  `;
+}
+
+function col(content) {
+  return `<div class="col-sm">${content}</div>`;
+}
+
+function text(content) {
+  console.log(content);
+  return `<p>${content}</p>`;
 }
