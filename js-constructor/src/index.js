@@ -1,22 +1,20 @@
 import { model } from './model';
-import { columns, image, text, title } from './templates';
+import { templates } from './templates';
+import './styles/main.css';
+
 const $site = document.querySelector('#site');
 
 model.forEach((block) => {
-  let html = '';
-  if (block.type === 'title') {
-    // html = `
-    // <div class="row">
-    //   <div class="col-sm"><h1>${block.value}</h1></div>
-    // </div>
-    // `;
-    html = title(block.value);
-  } else if (block.type === 'text') {
-    html = text(block.value);
-  } else if (block.type === 'columns') {
-    html = columns(block.value);
-  } else if (block.type === 'image') {
-    html = image(block.value);
-  }
-  $site.insertAdjacentHTML('beforeend', html);
+  // let html = '';
+  // if (block.type === 'title') {
+  //   html = templates.title(block.value);
+  // } else if (block.type === 'text') {
+  //   html = templates.text(block.value);
+  // } else if (block.type === 'columns') {
+  //   html = templates.columns(block.value);
+  // } else if (block.type === 'image') {
+  //   html = templates.image(block.value);
+  // }
+  const toHTML = templates[block.type];
+  $site.insertAdjacentHTML('beforeend', toHTML(block.value));
 });
