@@ -16,5 +16,7 @@ model.forEach((block) => {
   //   html = templates.image(block.value);
   // }
   const toHTML = templates[block.type];
-  $site.insertAdjacentHTML('beforeend', toHTML(block.value));
+  if (toHTML) {
+    $site.insertAdjacentHTML('beforeend', toHTML(block.value, block.tag));
+  }
 });

@@ -1,5 +1,5 @@
 export const model = [
-  { type: 'title', value: 'Hello world from js!!!' },
+  { type: 'title', value: 'Hello world from js!!!', tag: 'h4' },
   { type: 'text', value: 'Here we go with some text' },
   {
     type: 'columns',

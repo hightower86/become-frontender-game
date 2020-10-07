@@ -1,7 +1,8 @@
 import img from './assets/image.png';
+import { col, row } from './utils';
 
 function columns(columns) {
-  return row(columns.map((column) => col(column)).join(''));
+  return row(columns.map(col).join(''));
 }
 
 function image(path) {
@@ -11,27 +12,11 @@ function image(path) {
 }
 
 function text(content) {
-  return `<p>${content}</p>`;
+  return row(col(`<p>${content}</p>`));
 }
 
-function title(content) {
-  return `<h1>${content}</h1>`;
-}
-
-function row(content) {
-  return `
-  <div class="row">
-    ${content}
-  </div>
-  `;
-}
-
-function col(content) {
-  return `
-  <div class="col-sm">
-    ${content}
-  </div>
-  `;
+function title(content, tag = 'h1') {
+  return row(col(`<${tag}>${content}</${tag}>`));
 }
 
 export const templates = {
@@ -39,6 +24,4 @@ export const templates = {
   text,
   title,
   image,
-  col,
-  row,
 };
